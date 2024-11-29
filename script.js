@@ -5,6 +5,13 @@ const prompt = document.getElementById('prompt');
 
 writeOutput("Hi, I'm Malachi Bunett. Welcome to my portfolio. Use \"help\" to see available commands.");
 
+terminal.addEventListener('click', (e) => {
+    // Ensure the input stays focused when clicking anywhere on the terminal
+    if (e.target !== input) {
+        input.focus();
+    }
+});
+
 let currentPath = '/';
 const fileSystem = {
     '/': {
