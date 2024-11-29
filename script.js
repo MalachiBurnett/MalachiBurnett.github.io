@@ -109,7 +109,7 @@ function listDirectory() {
         return;
     }
     const contents = Object.keys(dir.contents);
-    writeOutput(contents.join('  '));
+    writeOutput(contents.join('  \n'));
 }
 
 function changeDirectory(folder) {
