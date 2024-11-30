@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AQA Pseudocode to Python</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/skulpt/1.1.0/skulpt.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/skulpt/1.1.0/skulpt-stdlib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.1.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.1.0/dist/skulpt-stdlib.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             line-height: 1.6;
         }
-
         textarea {
             width: 100%;
             height: 150px;
             margin-bottom: 10px;
         }
-
         button {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
         }
-
         pre {
             background-color: #f4f4f4;
             padding: 10px;
@@ -33,7 +29,6 @@
         }
     </style>
 </head>
-
 <body>
     <h1>AQA Pseudocode to Python Transpiler</h1>
     <p>Enter AQA Pseudocode below:</p>
@@ -43,26 +38,23 @@
     <pre id="pythonOutput"></pre>
     <h2>Program Output:</h2>
     <pre id="programOutput"></pre>
-
+    
     <script>
-        // Example pseudocode to Python transpiler (you can replace this logic)
         function transpilePseudocodeToPython(pseudocode) {
             return pseudocode
-                .replace(/OUTPUT\s+(.*)/g, "print($1)")  // Replace OUTPUT with print()
-                .replace(/INPUT\s+(.+)/g, "$1 = input()") // Replace INPUT with input assignment
-                .replace(/IF\s+(.*)\s+THEN/g, "if ($1):") // Replace IF THEN structure
-                .replace(/ELSE/g, "else:")               // Replace ELSE
-                .replace(/ENDIF/g, "")                   // Remove ENDIF
-                .replace(/WHILE\s+(.*)\s+DO/g, "while ($1):") // Replace WHILE DO
-                .replace(/ENDWHILE/g, "")                // Remove ENDWHILE
-                .replace(/FOR\s+(.*)\s+TO\s+(.*)\s+DO/g, "for $1 in range($1, $2 + 1):") // FOR loop
-                .replace(/ENDFOR/g, "")                  // Remove ENDFOR
-                .replace(/(\s*)BEGIN/g, "")              // Remove BEGIN (optional)
-                .replace(/(\s*)END/g, "");               // Remove END (optional)
+                .replace(/OUTPUT\s+(.*)/g, "print(\$1)")
+                .replace(/INPUT\s+(.+)/g, "\$1 = input()")
+                .replace(/IF\s+(.*)\s+THEN/g, "if (\$1):")
+                .replace(/ELSE/g, "else:")
+                .replace(/ENDIF/g, "")
+                .replace(/WHILE\s+(.*)\s+DO/g, "while (\$1):")
+                .replace(/ENDWHILE/g, "")
+                .replace(/FOR\s+(.*)\s+TO\s+(.*)\s+DO/g, "for \$1 in range(\$1, \$2 + 1):")
+                .replace(/ENDFOR/g, "")
+                .replace(/(\s*)BEGIN/g, "")
+                .replace(/(\s*)END/g, "");
         }
 
-
-        // Function to execute Python code
         function executePythonCode(pythonCode, outputElementId) {
             const outputElement = document.getElementById(outputElementId);
             outputElement.textContent = ""; // Clear previous output
@@ -74,7 +66,10 @@
                 return Sk.builtinFiles["files"][x];
             }
 
-            Sk.configure({ output: (text) => { outputElement.textContent += text; }, read: builtinRead });
+            Sk.configure({
+                output: (text) => { outputElement.textContent += text; },
+                read: builtinRead
+            });
 
             const myPromise = Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, pythonCode, true));
             myPromise.catch((err) => {
@@ -82,18 +77,14 @@
             });
         }
 
-        // Main function: Transpile and run
         function transpileAndRun() {
             const pseudocodeInput = document.getElementById("pseudocodeInput").value;
             const pythonOutputElement = document.getElementById("pythonOutput");
             const programOutputElement = document.getElementById("programOutput");
 
             try {
-                // Transpile pseudocode to Python
                 const pythonCode = transpilePseudocodeToPython(pseudocodeInput);
                 pythonOutputElement.textContent = pythonCode;
-
-                // Execute the Python code
                 executePythonCode(pythonCode, "programOutput");
             } catch (error) {
                 programOutputElement.textContent = `Error: ${error.message}`;
@@ -101,5 +92,4 @@
         }
     </script>
 </body>
-
 </html>
