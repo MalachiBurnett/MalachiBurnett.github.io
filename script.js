@@ -33,7 +33,7 @@ const fileSystem = {
                 contents: {
                     'qualifications.txt': { type: 'file', content: 'i have a c++ certificate from w3schools and i dont have any other qualifications yet but that is because im still in secondary school. but im still a competent programmer despite my age.' },
                     'schools.txt': { type: 'file', content: 'i currently go to south devon UTC and i am doing AQA GCSE computer science, Cambridge nationals creative imedia and Cambridge nationals IT' },
-                    'cppcertificate.exe': { type: 'link', url: 'https://verify.w3schools.com/1OGKRJMM03', mode: 'iframe'},
+                    'cppcertificate.exe': { type: 'link', url: 'https://verify.w3schools.com/1OGKRJMM03', mode: 'iframe', extra: ''},
                 },
             },
         },
