@@ -60,7 +60,7 @@ function handleCommand(command) {
                 'help - Show this help message\n' +
                 'clear - Clear the terminal\n' +
                 'ls - List directory contents\n' +
-                'cd [folder] - Change directory\n' +
+                'cd [folder] - Change directory (use cd ../ to go back)\n' +
                 'view [file] - View a text file\n' +
                 './[program].exe - Execute a program in the current directory'
             );
@@ -108,8 +108,20 @@ function listDirectory() {
         writeOutput('Not a directory');
         return;
     }
-    const contents = Object.keys(dir.contents);
-    writeOutput(contents.join('\n'));
+    const contents = dir.contents;
+    for (let i in contents) {
+        if (contents[i].type === 'dir') {
+            if (i.length < 6) {
+                writeOutput(`${i}\t\t-\tfolder`);
+            } else {
+                writeOutput(`${i}\t-\tfolder`);
+            }
+        } else if (contents[i].type === 'file') {
+            writeOutput(`${i}\t-\tfile`);
+        } else if (contents[i].type === 'link') {
+            writeOutput(`${i}\t-\tprogram`);
+        }
+    }
 }
 
 function changeDirectory(folder) {
