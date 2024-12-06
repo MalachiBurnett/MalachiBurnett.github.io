@@ -20,7 +20,9 @@ const fileSystem = {
             'github.exe': { type: 'link', url: 'https://github.com/MalachiBurnett', extra: '', mode: 'link'},   
             projects: {
                 type: 'dir',
-                contents: {},
+                contents: {
+                    'fanta-c.exe': {type: 'link', url:'https://github.com/MalachiBurnett/Fanta-C', extra: '', mode: 'link'}
+                },
             },
             work: {
                 type: 'dir',
