@@ -3,28 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malachi Burnetts Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Portfolio Modes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <div id="terminal">
-        <div id="welcome">
-            <img src="IMG_0258.jpg" width=120rem height=120rem>
-    <pre>
-    ███╗   ███╗ █████╗ ██╗      █████╗  ██████╗██╗  ██╗██╗    ██████╗ ██╗   ██╗██████╗ ███╗   ██╗███████╗████████╗████████╗
-    ████╗ ████║██╔══██╗██║     ██╔══██╗██╔════╝██║  ██║██║    ██╔══██╗██║   ██║██╔══██╗████╗  ██║██╔════╝╚══██╔══╝╚══██╔══╝
-    ██╔████╔██║███████║██║     ███████║██║     ███████║██║    ██████╔╝██║   ██║██████╔╝██╔██╗ ██║█████╗     ██║      ██║   
-    ██║╚██╔╝██║██╔══██║██║     ██╔══██║██║     ██╔══██║██║    ██╔══██╗██║   ██║██╔══██╗██║╚██╗██║██╔══╝     ██║      ██║   
-    ██║ ╚═╝ ██║██║  ██║███████╗██║  ██║╚██████╗██║  ██║██║    ██████╔╝╚██████╔╝██║  ██║██║ ╚████║███████╗   ██║      ██║   
-    ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝      ╚═╝   
-    </pre>
-        </div>
-        <div id="output"></div>
-        <div id="input-line">
-            <span class="prompt" id="prompt">@Portfolio/ $</span>
-            <input type="text" id="input" autofocus>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <h1>Welcome to Malachi Burnett's Portfolio</h1>
+    <p>Choose your preferred mode:</p>
+    <a href="terminalmode.html">Terminal Mode</a>
+    <a href="guimode.html">GUI Mode</a>
 </body>
 </html>

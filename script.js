@@ -3,7 +3,7 @@ const output = document.getElementById('output');
 const input = document.getElementById('input');
 const prompt = document.getElementById('prompt');
 
-writeOutput("Hi, I'm Malachi Bunett. Welcome to my portfolio. Use \"help\" to see available commands.");
+writeOutput("Hi, I'm Malachi Burnett. Welcome to my portfolio. Use \"help\" to see available commands.");
 
 terminal.addEventListener('click', (e) => {
     // Ensure the input stays focused when clicking anywhere on the terminal
@@ -17,25 +17,26 @@ const fileSystem = {
     '/': {
         type: 'dir',
         contents: {
-            'github.exe': { type: 'link', url: 'https://github.com/MalachiBurnett', extra: '', mode: 'link'},   
+            'github.exe': { type: 'link', url: 'https://github.com/MalachiBurnett', extra: 'Explore my repositories and projects.', mode: 'link'},   
             projects: {
                 type: 'dir',
                 contents: {
-                    'fanta-c.exe': {type: 'link', url:'https://github.com/MalachiBurnett/Fanta-C', extra: '', mode: 'link'}
+                    'fanta-c.exe': {type: 'link', url:'https://github.com/MalachiBurnett/Fanta-C', extra: 'A simple interpreter for a custom programming language I created.', mode: 'link'},
+                    'logic-gate-cpu.exe': {type: 'link', url:'https://github.com/MalachiBurnett/Logic-Gate-CPU', extra: 'A CPU designed using logic gates, complete with a custom IDE made with Python and the Tkinter library. It supports 16 instructions.', mode: 'link'},
                 },
             },
             work: {
                 type: 'dir',
                 contents: {
-                    'excape.exe': { type: 'link', url: 'https://excape.co.uk', extra: '\nI currently work at exmout escape rooms programming the rooms using various microcontrollers and arduino IDE (c++)', mode: 'iframe' },
+                    'excape.exe': { type: 'link', url: 'https://excape.co.uk', extra: 'I work at Exmouth Escape Rooms creating and programming puzzles using microcontrollers and Arduino IDE (C++).', mode: 'iframe' },
                 },
             },
             education: {
                 type: 'dir',
                 contents: {
-                    'qualifications.txt': { type: 'file', content: 'i have a c++ certificate from w3schools and i dont have any other qualifications yet but that is because im still in secondary school. but im still a competent programmer despite my age.' },
-                    'schools.txt': { type: 'file', content: 'i currently go to south devon UTC and i am doing AQA GCSE computer science, Cambridge nationals creative imedia and Cambridge nationals IT' },
-                    'cppcertificate.exe': { type: 'link', url: 'https://verify.w3schools.com/1OGKRJMM03', mode: 'iframe', extra: 'i got this certificate for c++ programming at 13 years old'},
+                    'qualifications.txt': { type: 'file', content: 'I have a C++ Certificate from W3Schools. Despite being in secondary school, I am a competent programmer.' },
+                    'schools.txt': { type: 'file', content: 'I currently attend South Devon UTC, studying AQA GCSE Computer Science, Cambridge Nationals Creative iMedia, and Cambridge Nationals IT.' },
+                    'cppcertificate.exe': { type: 'link', url: 'https://verify.w3schools.com/1OGKRJMM03', mode: 'iframe', extra: 'I earned this certificate for C++ programming at 13 years old.'},
                 },
             },
         },
@@ -47,7 +48,7 @@ input.addEventListener('keydown', (e) => {
         const command = input.value.trim();
         input.value = '';
         handleCommand(command);
-        prompt.innerHTML = `@portfilio${currentPath} $`;
+        prompt.innerHTML = `@portfolio${currentPath} $`;
     }
 });
 
@@ -80,7 +81,8 @@ function handleCommand(command) {
             viewOrEditFile(args[0]);
             break;
         case './github.exe':
-        case './aboutme.exe':
+        case './fanta-c.exe':
+        case './logic-gate-cpu.exe':
         case './excape.exe':
         case './cppcertificate.exe':
             executeLink(cmd.slice(2));
